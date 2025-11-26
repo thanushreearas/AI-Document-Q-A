@@ -1,0 +1,26 @@
+@echo off
+echo Starting AI Document Q&A System...
+
+echo Installing Python dependencies...
+pip install -r requirements.txt
+
+echo Creating uploads directory...
+if not exist "backend\uploads" mkdir backend\uploads
+
+echo Starting Flask backend...
+start "Backend Server" cmd /k "cd backend && python app.py"
+
+echo Installing Node.js dependencies...
+cd frontend
+call npm install
+
+echo Starting React frontend...
+start "Frontend Server" cmd /k "npm start"
+
+echo.
+echo System is starting up...
+echo Backend: http://localhost:5000
+echo Frontend: http://localhost:3000
+echo.
+echo Press any key to exit...
+pause >nul
